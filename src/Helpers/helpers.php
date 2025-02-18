@@ -7,6 +7,14 @@ if (!function_exists('themes_path')) {
     }
 }
 
+if (!function_exists('assets_path')) {
+
+    function assets_path($filename = null)
+    {
+        return app()->make('igaster.themes')->assets_path($filename);
+    }
+}
+
 if (!function_exists('theme_url')) {
 
     function theme_url($url)

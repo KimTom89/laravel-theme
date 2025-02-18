@@ -32,7 +32,7 @@ class createTheme extends baseCommand
 
         // Calculate Absolute paths & check if they exist
         $viewsPathFull = themes_path($viewsPath, 0755, true);
-        $assetPathFull = public_path($assetPath, 0755, true);
+        $assetPathFull = assets_path($assetPath, 0755, true);
 
         if ($this->files->exists($viewsPathFull)) {
             $this->error("Error: Folder already exists: $viewsPathFull");

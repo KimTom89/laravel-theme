@@ -47,7 +47,7 @@ class createPackage extends baseCommand
 
         $viewsPath = themes_path($theme->viewsPath);
 
-        $assetPath = public_path($theme->assetPath);
+        $assetPath = assets_path($theme->assetPath);
 
         // Packages storage path
         $packagesPath = $this->packages_path();

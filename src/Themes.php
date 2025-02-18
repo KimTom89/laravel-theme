@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Event;
 class Themes
 {
     protected $themesPath;
+    protected $assetsPath;
     protected $activeTheme = null;
     protected $themes = [];
     protected $laravelViewsPath;
@@ -14,6 +15,7 @@ class Themes
     {
         $this->laravelViewsPath = config('view.paths');
         $this->themesPath = config('themes.themes_path', null) ?: config('view.paths')[0];
+        $this->assetsPath = config('themes.assets_path', null);
         $this->cachePath = base_path('bootstrap/cache/themes.php');
     }
 
@@ -26,6 +28,17 @@ class Themes
     public function themes_path($filename = null)
     {
         return $filename ? $this->themesPath . '/' . $filename : $this->themesPath;
+    }
+
+    /**
+     * Return $filename path located in assets folder
+     *
+     * @param  string $filename
+     * @return string
+     */
+    public function assets_path($filename = null)
+    {
+        return $filename ? $this->assetsPath . '/' . $filename : $this->assetsPath;
     }
 
     /**

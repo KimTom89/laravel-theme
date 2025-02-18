@@ -71,7 +71,7 @@ class installPackage extends baseCommand
 
         // Target Paths
         $viewsPath = themes_path($themeJson->get('views-path'));
-        $assetPath = public_path($themeJson->get('asset-path'));
+        $assetPath = assets_path($themeJson->get('asset-path'));
 
         // If Views+Asset paths don't exist, move theme from temp to target paths
         if (file_exists($viewsPath)) {

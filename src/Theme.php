@@ -82,10 +82,13 @@ class Theme
         }
 
         // Lookup asset in current's theme asset path
-        $fullUrl = (empty($this->assetPath) ? '' : '/') . $this->assetPath . '/' . $baseUrl;
+        // $fullUrl = (empty($this->assetPath) ? '' : '/') . $this->assetPath . '/' . $baseUrl;
+        $fullUrl = $this->assetPath . '/' . $baseUrl;
 
-        if (file_exists($fullPath = public_path($fullUrl))) {
-            return $fullUrl . $params;
+        if (file_exists($fullPath = assets_path($fullUrl))) {
+            $relativePath = str_replace(public_path(), '', $fullPath);
+            $relativePath = str_replace('\\', '/', $relativePath);
+            return $relativePath . $params;
         }
 
         // If not found then lookup in parent's theme asset path
@@ -94,7 +97,7 @@ class Theme
         }
         // No parent theme? Lookup in the public folder.
         else {
-            if (file_exists(public_path($baseUrl))) {
+            if (file_exists(assets_path($baseUrl))) {
                 return "/" . $baseUrl . $params;
             }
         }
@@ -125,7 +128,7 @@ class Theme
     public function install($clearPaths = false)
     {
         $viewsPath = themes_path($this->viewsPath);
-        $assetPath = public_path($this->assetPath);
+        $assetPath = assets_path($this->assetPath);
 
         if ($clearPaths) {
             if (File::exists($viewsPath)) {
@@ -153,7 +156,7 @@ class Theme
     {
         // Calculate absolute paths
         $viewsPath = themes_path($this->viewsPath);
-        $assetPath = public_path($this->assetPath);
+        $assetPath = assets_path($this->assetPath);
 
         // Check that paths exist
         $viewsExists = File::exists($viewsPath);

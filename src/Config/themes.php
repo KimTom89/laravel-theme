@@ -15,6 +15,16 @@ return [
 
 	/*
 	|--------------------------------------------------------------------------
+	| Root path where theme Assets will be located.
+	| Can be outside default assets path e.g.: public/themes
+	| Leave it null if you will put your themes in the default assets folder
+	| (as defined in config\views.php)
+	|--------------------------------------------------------------------------
+	*/
+	'assets_path' => null, // eg: public_path('themes')
+
+	/*
+	|--------------------------------------------------------------------------
 	| Set behavior if an asset is not found in a Theme hierarchy.
 	| Available options: THROW_EXCEPTION | LOG_ERROR | IGNORE
 	|--------------------------------------------------------------------------
